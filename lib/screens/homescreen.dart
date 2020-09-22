@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_ui/data/data.dart';
 import 'package:flutter_food_delivery_ui/models/restaurant.dart';
-import 'package:flutter_food_delivery_ui/screens/resturantscreen.dart';
+import 'package:flutter_food_delivery_ui/screens/restaurant_screen.dart';
 import 'package:flutter_food_delivery_ui/widgets/rating_stars.dart';
 import 'package:flutter_food_delivery_ui/widgets/recent_orders.dart';
 
@@ -17,9 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
       restaurantList.add(
         GestureDetector(
           onTap: () => Navigator.push(
-            context,
+             context,
             MaterialPageRoute(
-              builder: (_) => RestaurantScreen(),
+              builder: (_) => RestaurantScreen(restaurant: restaurant),
             ),
           ),
           child: Container(
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: Hero(
-                    tag: restaurant.imageUrl,
+                    tag:restaurant.imageUrl,
                     child: Image(
                       height: 130.0,
                       width: 150.0,
