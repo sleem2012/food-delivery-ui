@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_ui/data/data.dart';
 import 'package:flutter_food_delivery_ui/models/restaurant.dart';
+import 'package:flutter_food_delivery_ui/screens/cartScreen.dart';
 import 'package:flutter_food_delivery_ui/screens/restaurant_screen.dart';
 import 'package:flutter_food_delivery_ui/widgets/rating_stars.dart';
 import 'package:flutter_food_delivery_ui/widgets/recent_orders.dart';
@@ -16,12 +17,13 @@ class _HomeScreenState extends State<HomeScreen> {
     restaurants.forEach((Restaurant restaurant) {
       restaurantList.add(
         GestureDetector(
-          onTap: () => Navigator.push(
-             context,
-            MaterialPageRoute(
-              builder: (_) => RestaurantScreen(restaurant: restaurant),
-            ),
-          ),
+          onTap: () =>
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => RestaurantScreen(restaurant: restaurant),
+                ),
+              ),
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
             decoration: BoxDecoration(
@@ -37,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(15.0),
                   child: Hero(
-                    tag:restaurant.imageUrl,
+                    tag: restaurant.imageUrl,
                     child: Image(
                       height: 130.0,
                       width: 150.0,
@@ -112,7 +114,10 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           FlatButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context, MaterialPageRoute(builder: (_) => CartScreen(),),);
+            },
             child: Text(
               'cart (${currentUser.cart.length})',
               style: TextStyle(color: Colors.white, fontSize: 18),
@@ -135,7 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30.0),
                     borderSide: BorderSide(
-                        width: .8, color: Theme.of(context).primaryColor),
+                        width: .8, color: Theme
+                        .of(context)
+                        .primaryColor),
                   ),
                   hintText: 'Search food or Restaurants',
                   prefixIcon: Icon(
